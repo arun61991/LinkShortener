@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @link.url %>
+</p>
+
+<p>
+  <strong>Sort Url:</strong>
+  <%= link_to @link.get_short(request.base_url), @link.get_short(request.base_url) %>
+</p>
+
+
+<p>
+  <strong>Visited count:</strong>
+  <%= @link.clicked %>
+</p>
+
+<p>
+  <strong>Countries:</strong>
+  <%= @link.countries %>
+</p>
+
+<p>
+  <strong>IP Addresses:</strong>
+  <%= @link.ip_addresses %>
+</p>
+
+
+

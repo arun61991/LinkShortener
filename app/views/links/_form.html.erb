@@ -1,0 +1,40 @@
+<%= form_for(link) do |f| %>
+  <% if link.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(link.errors.count, "error") %> prohibited this link from being saved:</h2>
+
+      <ul>
+      <% link.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :url %>
+    <%= f.text_field :url %>
+  </div>
+  
+  <div class="actions">
+    <input type="button" name="submit" id="submit_form" value="Short Link">
+  </div>
+<% end %>
+
+<script>
+  $(document).ready(function() {
+    $('#submit_form').click(function() {
+      var url = $("#link_url").val();
+      item = {}
+      item ["url"] = url;
+      $.ajax({
+        url: "<%= links_path %>",
+        type: 'POST',
+        data: {
+          link : item
+        },
+        dataType: "script"
+      });
+    });
+  });
+</script>

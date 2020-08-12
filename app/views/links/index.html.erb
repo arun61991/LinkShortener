@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Analytics</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Url</th>
+      <th> Short Url</th>
+      <th>Visited count</th>
+      <th>Countries</th>
+      <th>IP Addresses</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @links.each do |link| %>
+      <tr>
+        <td><%= link.url %></td>
+        <td><%= link_to link.get_short(request.base_url), link.get_short(request.base_url) %></td>
+        <td><%= link.clicked %></td>
+        <td><%= link.countries %></td>
+        <td><%= link.ip_addresses %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Link', new_link_path %>
